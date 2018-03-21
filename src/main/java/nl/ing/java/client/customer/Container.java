@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @Builder
-public class ContainerResponse {
+public class Container {
     private String containerId;
     private String name;
     private String size;

@@ -10,5 +10,5 @@ import java.util.Collection;
 @NotNull
 @Getter
 public class CustomerResponse {
-    private Collection<ContainerResponse> containers;
+    private Collection<Container> containers;
 }
