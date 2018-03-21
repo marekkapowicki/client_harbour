@@ -42,7 +42,7 @@ public class LoginClient {
     }
 
     public interface LoginService {
-        @POST("/login")
+        @POST("login")
         Call<LoginResponse> login(@Body LoginRequest body);
     }
 
