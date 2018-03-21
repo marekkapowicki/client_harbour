@@ -1,7 +1,5 @@
 package nl.ing.java.client.login;
 
-import nl.ing.java.guild.common.login.LoginRequest;
-import nl.ing.java.guild.common.login.LoginResponse;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
