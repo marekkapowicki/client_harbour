@@ -1,9 +1,6 @@
 package nl.ing.java.client.login;
 
-import nl.ing.java.client.customer.Container;
-import nl.ing.java.client.customer.CustomerClient;
-import nl.ing.java.client.customer.CustomerResponse;
-import nl.ing.java.client.customer.PortClient;
+import nl.ing.java.client.customer.*;
 import nl.ing.java.client.offers.MarketPlaceClient;
 import nl.ing.java.client.offers.OffersResponse;
 import org.junit.Ignore;
@@ -44,5 +41,13 @@ public class ClientsTest {
         OffersResponse response = marketPlaceClient.allOffers();
         response = marketPlaceClient.getOffers("Utrecht");
         System.out.println("response = " + response);
+    }
+
+    @Test
+    @Ignore
+    public void changeStatus() throws IOException {
+        CustomerClient customerClient = CustomerClient.build("http://localhost:9090/api/");
+        boolean isSuccess = customerClient.changeStatus("ashish.jain@ing.com", "2", Status.CARRIER.name().toLowerCase());
+        System.out.println("isSuccess = " + isSuccess);
     }
 }

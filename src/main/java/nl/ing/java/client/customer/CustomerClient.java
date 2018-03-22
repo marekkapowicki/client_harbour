@@ -6,10 +6,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 import java.io.IOException;
-import java.util.List;
 
 public class CustomerClient {
     private static CustomerClient instance;
@@ -41,6 +41,13 @@ public class CustomerClient {
 
     }
 
+    public boolean changeStatus(String email, String containerId, String newStatus) throws IOException {
+        CustomerService service = retrofit.create(CustomerService.class);
+        Call<Void> action = service.changeStatus(email, containerId, newStatus);
+        Response<Void> result = action.execute();
+        return result.isSuccessful();
+    }
+
     public static CustomerClient build(String url) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -59,5 +66,11 @@ public class CustomerClient {
         @GET("customers/{email}/containers/{containerId}")
         @Headers({"content-type: application/json"})
         Call<Container> getContainerDetails(@Path("email") String email, @Path("containerId") String containerId);
+
+        @PUT("customers/{email}/containers/{containerId}/{newStatus}")
+        @Headers({"content-type: application/json"})
+        Call<Void> changeStatus(@Path("email") String email, @Path("containerId") String containerId,
+                                     @Path("newStatus") String newStatus);
+
     }
 }
