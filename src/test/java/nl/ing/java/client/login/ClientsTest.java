@@ -1,5 +1,6 @@
 package nl.ing.java.client.login;
 
+import nl.ing.java.client.customer.Container;
 import nl.ing.java.client.customer.CustomerClient;
 import nl.ing.java.client.customer.CustomerResponse;
 import nl.ing.java.client.customer.PortClient;
@@ -31,5 +32,6 @@ public class ClientsTest {
         CustomerClient customerClient = CustomerClient.build("http://localhost:9090/api/");
         CustomerResponse response = customerClient.getContainersByEmail("ashish.jain@ing.com");
 
+        Container detail = customerClient.containerDetail("ashish.jain@ing.com", "3");
     }
 }

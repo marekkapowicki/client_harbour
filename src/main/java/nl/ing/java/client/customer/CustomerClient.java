@@ -30,6 +30,17 @@ public class CustomerClient {
 
     }
 
+    public Container containerDetail(String email, String containerId) throws IOException {
+        CustomerService service = retrofit.create(CustomerService.class);
+        Call<Container> action = service.getContainerDetails(email, containerId);
+        Response<Container> result = action.execute();
+        if (result.isSuccessful()) {
+            return result.body();
+        }
+        throw new IllegalStateException("execution error");
+
+    }
+
     public static CustomerClient build(String url) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -44,5 +55,9 @@ public class CustomerClient {
         @GET("customers/{email}")
         @Headers({"content-type: application/json"})
         Call<CustomerResponse> getContainersByEmail(@Path("email") String email);
+
+        @GET("customers/{email}/containers/{containerId}")
+        @Headers({"content-type: application/json"})
+        Call<Container> getContainerDetails(@Path("email") String email, @Path("containerId") String containerId);
     }
 }
