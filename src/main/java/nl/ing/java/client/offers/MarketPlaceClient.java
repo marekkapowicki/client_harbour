@@ -21,20 +21,20 @@ public class MarketPlaceClient {
         this.retrofit = retrofit;
     }
 
-    public OfferResponse getOffers(String destination) throws IOException {
+    public OffersResponse getOffers(String destination) throws IOException {
         OfferService service = retrofit.create(OfferService.class);
-        Call<OfferResponse> action = service.getOffers(destination);
-        Response<OfferResponse> result = action.execute();
+        Call<OffersResponse> action = service.getOffers(destination);
+        Response<OffersResponse> result = action.execute();
         if (result.isSuccessful()) {
             return result.body();
         }
         throw new IllegalStateException("execution error");
     }
 
-    public OfferResponse allOffers() throws IOException {
+    public OffersResponse allOffers() throws IOException {
         OfferService service = retrofit.create(OfferService.class);
-        Call<OfferResponse> action = service.allOffers();
-        Response<OfferResponse> result = action.execute();
+        Call<OffersResponse> action = service.allOffers();
+        Response<OffersResponse> result = action.execute();
         if (result.isSuccessful()) {
             return result.body();
         }
@@ -54,10 +54,10 @@ public class MarketPlaceClient {
     public interface OfferService {
         @GET("market/api/offers")
         @Headers({"content-type: application/json"})
-        Call<OfferResponse> allOffers();
+        Call<OffersResponse> allOffers();
 
         @GET("market/api/offers/{destination}")
         @Headers({"content-type: application/json"})
-        Call<OfferResponse> getOffers(@Path("destination") String destination);
+        Call<OffersResponse> getOffers(@Path("destination") String destination);
     }
 }

@@ -5,7 +5,7 @@ import nl.ing.java.client.customer.CustomerClient;
 import nl.ing.java.client.customer.CustomerResponse;
 import nl.ing.java.client.customer.PortClient;
 import nl.ing.java.client.offers.MarketPlaceClient;
-import nl.ing.java.client.offers.OfferResponse;
+import nl.ing.java.client.offers.OffersResponse;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class ClientsTest {
     @Ignore
     public void marketPlaceClient() throws IOException {
         MarketPlaceClient marketPlaceClient = MarketPlaceClient.build("http://localhost:9091/");
-        OfferResponse response = marketPlaceClient.allOffers();
+        OffersResponse response = marketPlaceClient.allOffers();
         response = marketPlaceClient.getOffers("Utrecht");
         System.out.println("response = " + response);
     }
