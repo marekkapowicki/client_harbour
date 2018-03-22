@@ -4,6 +4,8 @@ import nl.ing.java.client.customer.Container;
 import nl.ing.java.client.customer.CustomerClient;
 import nl.ing.java.client.customer.CustomerResponse;
 import nl.ing.java.client.customer.PortClient;
+import nl.ing.java.client.offers.MarketPlaceClient;
+import nl.ing.java.client.offers.OfferResponse;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -33,5 +35,14 @@ public class ClientsTest {
         CustomerResponse response = customerClient.getContainersByEmail("ashish.jain@ing.com");
 
         Container detail = customerClient.containerDetail("ashish.jain@ing.com", "3");
+    }
+
+    @Test
+    @Ignore
+    public void marketPlaceClient() throws IOException {
+        MarketPlaceClient marketPlaceClient = MarketPlaceClient.build("http://localhost:9091/");
+        OfferResponse response = marketPlaceClient.allOffers();
+        response = marketPlaceClient.getOffers("Utrecht");
+        System.out.println("response = " + response);
     }
 }
