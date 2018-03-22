@@ -17,4 +17,5 @@ public class Container {
     private String size;
     private String location;
     private String info;
+    private ContainerDetail containerDetail;
 }
