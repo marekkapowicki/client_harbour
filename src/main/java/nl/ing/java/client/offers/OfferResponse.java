@@ -1,4 +1,4 @@
-package nl.ing.java.client.Offers;
+package nl.ing.java.client.offers;
 
 
 
