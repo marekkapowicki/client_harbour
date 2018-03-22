@@ -25,7 +25,6 @@ public class LoginClient {
 
         Response<LoginResponse> pps = login.execute();
         if (pps.isSuccessful()) {
-            System.out.println("pps = " + pps.body());
             return pps.body();
         }
         throw new RuntimeException();
