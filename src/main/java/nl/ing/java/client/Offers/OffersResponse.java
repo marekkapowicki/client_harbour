@@ -5,15 +5,16 @@ package nl.ing.java.client.Offers;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Collection;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class OfferResponse {
+@ToString
+public class OffersResponse {
 
-    private Long id;
-
-    private String destination;
-
+    private Collection<OfferResponse> offers;
 }
+
